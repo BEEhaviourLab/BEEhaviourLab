@@ -418,6 +418,20 @@ def main(
     end_frame: int | None,
     show: bool,
 ) -> None:
+    """Render a tracking overlay video from detections CSV data.
+
+    The CSV should contain tracking detections with columns like:
+    - frame_id
+    - x, y, w, h
+    - track_id
+    Output is a new video with bounding boxes and trails drawn on top of the input.
+
+    Examples:
+        bee track tracking-video-visualiser --video input.mp4 --csv tracks.csv \\
+            --out annotated.mp4
+        bee track tracking-video-visualiser --video input.mp4 --csv tracks.csv \\
+            --out annotated.mp4 --start-frame 100 --end-frame 300 --show
+    """
     config = VisualisationConfig.from_cli(
         persist_frames=persist_frames,
         trail_length=trail_length,

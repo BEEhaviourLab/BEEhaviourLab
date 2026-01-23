@@ -3,8 +3,8 @@ import click
 
 from beehaviourlab.tracking import (
     save_bboxes_to_file,
-    fix_ids,
-    extract_flow_info,
+    fix_ids_df,
+    extract_flow_info_df,
     global_analysis,
 )
 from beehaviourlab.config import ConfigFiles, get_config
@@ -57,13 +57,13 @@ def main(input_file: Path, output_dir: Path) -> None:
 
     click.echo("Fixing IDs...")
     output_csv_2 = output_dir / f"{input_file.stem}_{cfg.csv2_name}"
-    df = fix_ids(df, cfg.num_objects)
+    df = fix_ids_df(df, cfg.num_objects)
     df.write_csv(output_csv_2)
     click.echo(f"Saved fixed IDs CSV to {output_csv_2}")
 
     click.echo("Extracting flow info...")
     output_csv_3 = output_dir / f"{input_file.stem}_{cfg.csv3_name}"
-    df = extract_flow_info(df)
+    df = extract_flow_info_df(df)
     df.write_csv(output_csv_3)
     click.echo(f"Saved velocity CSV to {output_csv_3}")
 
