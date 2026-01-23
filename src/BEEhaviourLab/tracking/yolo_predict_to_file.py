@@ -5,6 +5,9 @@ import cv2
 import polars as pl
 import sys
 from pathlib import Path
+from beehaviourlab.config import ConfigFiles, get_config
+
+cfg = get_config(ConfigFiles.TRACKING)
 
 
 def save_bboxes_to_file(
@@ -46,9 +49,18 @@ def save_bboxes_to_file(
         When tracking is enabled, all detections are saved regardless of confidence
         threshold. The threshold only applies to non-tracking mode.
     """
-    # If source video cannot be opened, raise an error and exit
+    error_flag = False
     if not Path(source_video).is_file():
-        click.echo(f"Error: Source video file '{source_video}' not found.")
+        click.echo(f"Error: Source file '{source_video}'  not found.")
+        error_flag = True
+    elif not Path(model_path).is_file():
+        click.echo(f"Error: Model file '{model_path}' not found.")
+        error_flag = True
+    elif not (0.0 <= conf_threshold <= 1.0):
+        click.echo("Error: Confidence threshold must be between 0.0 and 1.")
+        error_flag = True
+
+    if error_flag:
         sys.exit(1)
 
     model = YOLO(model_path)
@@ -69,7 +81,7 @@ def save_bboxes_to_file(
             results = model.track(
                 frame,
                 persist=True,
-                tracker="custom_tracker.yaml",
+                tracker=cfg.ultralytics_config,
                 verbose=False,
             )[0]
         else:
@@ -154,10 +166,24 @@ def save_bboxes_to_file(
     "--output-path", required=True, type=str, help="Path to the output CSV file"
 )
 @click.option(
-    "--conf-threshold", required=True, type=float, help="Confidence threshold"
+    "--conf-threshold",
+    default=cfg.conf_threshold,
+    show_default=True,
+    type=float,
+    help="Confidence threshold (default from config)",
 )
-@click.option("--xywh", is_flag=True, help="Use xywh format for bounding boxes")
-@click.option("--track", is_flag=True, help="Enable tracking")
+@click.option(
+    "--xywh/--no-xywh",
+    default=cfg.xywh,
+    show_default=True,
+    help="Use xywh format for bounding boxes (default from config)",
+)
+@click.option(
+    "--track/--no-track",
+    default=cfg.track,
+    show_default=True,
+    help="Enable tracking (default from config)",
+)
 def main(
     model_path: str,
     source_video: str,
@@ -181,17 +207,21 @@ def main(
         track: Enable object tracking to maintain consistent IDs across frames.
 
     Examples:
-        Basic detection:
-        $ python yolo_predict_to_file.py --model-path model.pt --source-video video.mp4
+        Basic detection (defaults from config):
+        $ python yolo_predict_to_file.py --model-path model.pt --source-video video.mp4 \\
+          --output-path results.csv
+
+        Override confidence threshold:
+        $ python yolo_predict_to_file.py --model-path model.pt --source-video video.mp4 \\
           --output-path results.csv --conf-threshold 0.5
 
-        With tracking enabled:
-        $ python yolo_predict_to_file.py --model-path model.pt --source-video video.mp4
-          --output-path results.csv --conf-threshold 0.5 --track
+        Disable tracking (when config default is true):
+        $ python yolo_predict_to_file.py --model-path model.pt --source-video video.mp4 \\
+          --output-path results.csv --no-track
 
-        Using xywh format:
-        $ python yolo_predict_to_file.py --model-path model.pt --source-video video.mp4
-          --output-path results.csv --conf-threshold 0.5 --xywh
+        Enable xywh format (when config default is false):
+        $ python yolo_predict_to_file.py --model-path model.pt --source-video video.mp4 \\
+          --output-path results.csv --xywh
     """
     save_bboxes_to_file(
         model_path, source_video, output_path, conf_threshold, xywh, track

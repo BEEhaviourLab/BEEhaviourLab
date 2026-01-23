@@ -6,6 +6,22 @@ import numpy as np
 from scipy.optimize import linear_sum_assignment
 from typing import List, Dict, Optional, Tuple, Set
 from pathlib import Path
+from beehaviourlab.config import ConfigFiles, get_config
+
+cfg = get_config(ConfigFiles.TRACKING)
+
+
+def filter_out_feeder(df: pl.DataFrame) -> pl.DataFrame:
+    """
+    Filters out feeder objects from the DataFrame.
+
+    Args:
+        df (pl.DataFrame): The DataFrame containing bounding box data.
+
+    Returns:
+        pl.DataFrame: The filtered DataFrame.
+    """
+    return df.filter(pl.col("class_id") != cfg.feeder_label)
 
 
 def fix_ids(df: pl.DataFrame, num_objects: int) -> pl.DataFrame:
@@ -42,6 +58,8 @@ def fix_ids(df: pl.DataFrame, num_objects: int) -> pl.DataFrame:
         return pl.DataFrame(
             {c: pl.Series(name=c, values=[], dtype=schema[c]) for c in cols}
         )
+
+    df = filter_out_feeder(df)
 
     df = df.sort(["frame_id"])
 
