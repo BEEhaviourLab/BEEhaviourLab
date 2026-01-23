@@ -38,6 +38,9 @@ dependencies = [
     "pyyaml>=5.4.0",
 ]
 
+[project.scripts]
+bee = "beehaviourlab.cli:bee"
+
 [tool.setuptools]
 package-dir = {"" = "src"}
 
