@@ -10,7 +10,7 @@ from enum import Enum
 
 
 class ConfigFiles(Enum):
-    TRACKING = Path("src/BEEhaviourLab/config/tracking_config.yaml")
+    TRACKING = Path("src/beehaviourlab/config/tracking_config.yaml")
 
 
 def get_config(data: Union[ConfigFiles, Path, dict, None]) -> SimpleNamespace:
