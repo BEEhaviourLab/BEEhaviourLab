@@ -1,0 +1,21 @@
+# YOLO Tracking Configuration File
+model_path: "../best.pt"
+conf_threshold: 0.0 # Minimum confidence for detections
+xywh: true # Use (x, y, w, h) format for bounding boxes
+track: true # Enable tracking
+
+csv1_name: "yolo_tracking_raw.csv" # Raw tracking data
+csv2_name: "yolo_tracking_fixed_ids.csv" # Tracking data with fixed IDs
+csv3_name: "yolo_tracking_fixed_ids_velocity.csv" # Tracking data with velocity
+
+required_cols: # Columns required in the CSV files
+  - frame_id
+  - class_id
+  - x
+  - y
+  - w
+  - h
+  - track_id
+  - conf
+
+feeder_label: 2 # Class ID for feeder
