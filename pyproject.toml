@@ -40,6 +40,11 @@ dependencies = [
     "pytest-cov>=5.0.0",
 ]
 
+[project.optional-dependencies]
+docs = [
+    "sphinx>=7.0.0",
+]
+
 [project.scripts]
 bee = "beehaviourlab.cli:bee"
 
