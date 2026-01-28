@@ -69,13 +69,9 @@ def test_process_video_runs_pipeline(tmp_path, monkeypatch) -> None:
         calls["extract"] = True
         return df
 
-    def fake_global(df, out_dir, stem):
-        calls["global"] = (out_dir, stem, len(df))
-
     monkeypatch.setattr(pv, "save_bboxes_to_file", fake_save)
     monkeypatch.setattr(pv, "fix_ids_df", fake_fix)
     monkeypatch.setattr(pv, "extract_flow_info_df", fake_extract)
-    monkeypatch.setattr(pv, "global_analysis", fake_global)
 
     result = pv.main.callback(input_video, output_dir)
     assert result is None
@@ -83,7 +79,6 @@ def test_process_video_runs_pipeline(tmp_path, monkeypatch) -> None:
     assert (output_dir / f"{input_video.stem}_{pv.cfg.csv1_name}").exists()
     assert (output_dir / f"{input_video.stem}_{pv.cfg.csv2_name}").exists()
     assert (output_dir / f"{input_video.stem}_{pv.cfg.csv3_name}").exists()
-    assert calls["global"][1] == input_video.stem
 
 
 def test_process_video_handles_no_detections(tmp_path, monkeypatch) -> None:
@@ -106,16 +101,11 @@ def test_process_video_handles_no_detections(tmp_path, monkeypatch) -> None:
         calls["extract"] = True
         return df
 
-    def fake_global(df, out_dir, stem):
-        calls["global"] = len(df)
-
     monkeypatch.setattr(pv, "save_bboxes_to_file", fake_save)
     monkeypatch.setattr(pv, "fix_ids_df", fake_fix)
     monkeypatch.setattr(pv, "extract_flow_info_df", fake_extract)
-    monkeypatch.setattr(pv, "global_analysis", fake_global)
 
     result = pv.main.callback(input_video, output_dir)
     assert result is None
-    assert calls["global"] == 0
     assert (output_dir / f"{input_video.stem}_{pv.cfg.csv2_name}").exists()
     assert (output_dir / f"{input_video.stem}_{pv.cfg.csv3_name}").exists()

@@ -19,7 +19,6 @@ def test_track_help_lists_subcommands() -> None:
         "run-yolo",
         "fix-ids",
         "extract-flow",
-        "speed-analysis",
         "visualise-tracking",
     ):
         assert command in result.output
@@ -32,7 +31,6 @@ def test_track_subcommand_help_works() -> None:
         "run-yolo",
         "fix-ids",
         "extract-flow",
-        "speed-analysis",
         "visualise-tracking",
     ]
     for command in subcommands:
