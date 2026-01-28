@@ -5,7 +5,6 @@ from beehaviourlab.tracking import (
     save_bboxes_to_file,
     fix_ids_df,
     extract_flow_info_df,
-    global_analysis,
 )
 from beehaviourlab.config import ConfigFiles, get_config
 
@@ -66,9 +65,7 @@ def main(input_file: Path, output_dir: Path) -> None:
     df = extract_flow_info_df(df)
     df.write_csv(output_csv_3)
     click.echo(f"Saved velocity CSV to {output_csv_3}")
-
-    click.echo("Global analysis")
-    global_analysis(df, output_dir, input_file.stem)
+    
     click.echo("Done!")
 
 
