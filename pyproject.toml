@@ -1,10 +1,9 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=68", "setuptools-scm>8"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "beehaviourlab"
-version = "0.1.1"
 description = "BEEhaviourLab provides tools for detecting, tracking, and analysing bee behaviour from video data."
 readme = "README.md"
 keywords = ["bee", "behaviour", "tracking", "computer-vision", "yolo"]
@@ -28,6 +27,7 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Image Recognition",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
+dynamic = ["version"]
 dependencies = [
     "ultralytics==8.3.78",
     "polars>=0.20.0",
