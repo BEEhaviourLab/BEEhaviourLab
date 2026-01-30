@@ -28,3 +28,9 @@ Build the docs locally:
    sphinx-build -b html docs docs/_build/html
 
 The generated HTML can be found in ``docs/_build/html``.
+
+Test dependencies:
+
+.. code-block:: bash
+
+   pip install -e ".[test]"
