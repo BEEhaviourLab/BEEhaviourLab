@@ -71,6 +71,10 @@ bee = "beehaviourlab.cli:bee"
 [tool.setuptools]
 package-dir = {"" = "src"}
 license-files = ["LICENSE"]
+include-package-data = true
+
+[tool.setuptools_scm]
+write_to = "src/beehaviourlab/_version.py"
 
 [tool.setuptools.packages.find]
 where = ["src"]
