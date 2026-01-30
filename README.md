@@ -24,6 +24,12 @@ pip install "beehaviourlab[docs]"
 pip install "beehaviourlab[test]"
 ```
 
+Install with dev extras (docs + tests):
+
+```
+pip install "beehaviourlab[dev]"
+```
+
 Install from source (recommended for development):
 
 ```

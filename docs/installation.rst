@@ -15,6 +15,7 @@ From PyPI with extras:
 
    pip install "beehaviourlab[docs]"
    pip install "beehaviourlab[test]"
+   pip install "beehaviourlab[dev]"
 
 From source (editable):
 
