@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "beehaviourlab"
-version = "0.1.0"
+version = "0.1.1"
 description = "BEEhaviourLab provides tools for detecting, tracking, and analysing bee behaviour from video data."
 readme = "README.md"
 keywords = ["bee", "behaviour", "tracking", "computer-vision", "yolo"]
