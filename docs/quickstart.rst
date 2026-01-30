@@ -3,6 +3,12 @@ Quickstart Guide
 
 This guide shows the simplest end-to-end usage of the Tracking pipeline.
 
+Create local config files (optional but recommended if you want to tweak defaults):
+
+.. code-block:: bash
+
+   bee config init
+
 1) Run the tracking pipeline on a video:
 
 .. code-block:: bash

@@ -1,16 +1,16 @@
 import logging
 import sys
+from enum import Enum
+from importlib import resources
 from pathlib import Path
 from types import SimpleNamespace
 from typing import Union
 
 import yaml
 
-from enum import Enum
-
 
 class ConfigFiles(Enum):
-    TRACKING = Path("src/beehaviourlab/config/tracking_config.yaml")
+    TRACKING = "tracking_config.yaml"
 
 
 def get_config(data: Union[ConfigFiles, Path, dict, None]) -> SimpleNamespace:
@@ -21,7 +21,12 @@ def get_config(data: Union[ConfigFiles, Path, dict, None]) -> SimpleNamespace:
     if data is None:
         return SimpleNamespace()
     elif isinstance(data, ConfigFiles):
-        return get_config(data.value)
+        local_path = Path(str(data.value))
+        if local_path.exists():
+            return get_config(local_path)
+        resource = resources.files("beehaviourlab.config").joinpath(str(data.value))
+        with resources.as_file(resource) as config_path:
+            return get_config(config_path)
     elif isinstance(data, Path):
         logging.info(f"Loading config from {data}")
         if data.exists():

@@ -69,3 +69,18 @@ bee track batch-process --input-dir /path/to/videos
 bee track batch-process --input-dir /path/to/videos --filter hiveA
 bee track batch-process --input-dir /path/to/videos --output-dir-name tracking_outputs
 ```
+
+Configuration
+-------------
+To create editable config files in your working directory:
+
+```
+bee config init
+```
+
+This writes:
+- `tracking_config.yaml`
+- `tracking/custom_tracker.yaml`
+
+The CLI will automatically use a `tracking_config.yaml` in your current working
+directory if present.
