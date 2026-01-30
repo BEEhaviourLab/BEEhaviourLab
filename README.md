@@ -11,6 +11,19 @@ https://beehaviourlab.github.io/BEEhaviourLab/
 
 Installation
 ------------
+Install from PyPI:
+
+```
+pip install beehaviourlab
+```
+
+Install with docs or test extras:
+
+```
+pip install "beehaviourlab[docs]"
+pip install "beehaviourlab[test]"
+```
+
 Install from source (recommended for development):
 
 ```

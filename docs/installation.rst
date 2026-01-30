@@ -1,8 +1,20 @@
 Installation Guide
 ==================
 
-BEEhaviourLab is distributed as a Python package. For now, the recommended
-approach is to install from source.
+BEEhaviourLab is distributed as a Python package.
+
+From PyPI:
+
+.. code-block:: bash
+
+   pip install beehaviourlab
+
+From PyPI with extras:
+
+.. code-block:: bash
+
+   pip install "beehaviourlab[docs]"
+   pip install "beehaviourlab[test]"
 
 From source (editable):
 
