@@ -14,11 +14,6 @@ authors = [
   {name = "Oliver King", email = "oliver.king@dtc.ox.ac.uk"},
 ]
 license = {text = "Apache-2.0"}
-urls = {
-    Documentation = "https://beehaviourlab.github.io/BEEhaviourLab/",
-    Source = "https://github.com/BEEhaviourLab/BEEhaviourLab",
-    Issues = "https://github.com/BEEhaviourLab/BEEhaviourLab/issues",
-}
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Science/Research",
@@ -43,6 +38,12 @@ dependencies = [
     "matplotlib>=3.3.0",
     "pyyaml>=5.4.0",
 ]
+
+[project.urls]
+Documentation = "https://beehaviourlab.github.io/BEEhaviourLab/"
+Source = "https://github.com/BEEhaviourLab/BEEhaviourLab"
+Issues = "https://github.com/BEEhaviourLab/BEEhaviourLab/issues"
+Changelog = "https://github.com/BEEhaviourLab/BEEhaviourLab/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 docs = [
