@@ -11,6 +11,13 @@ today and additional modules planned.
    :maxdepth: 2
    :caption: Contents:
 
+   installation
+   quickstart
    api
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Modules:
+
    tracking
    future-modules
