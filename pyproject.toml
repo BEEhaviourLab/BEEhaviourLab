@@ -43,6 +43,9 @@ dependencies = [
 [project.optional-dependencies]
 docs = [
     "sphinx>=7.0.0",
+    "pydata-sphinx-theme>=0.15.0",
+    "sphinx-autodoc-typehints>=2.0.0",
+    "sphinx-copybutton>=0.5.2",
 ]
 
 [project.scripts]
