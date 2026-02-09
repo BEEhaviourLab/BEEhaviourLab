@@ -12,11 +12,11 @@ authors = [
   {name = "Rachel Parkinson", email = "rachel.parkinson@biology.ox.ac.uk"},
   {name = "Oliver King", email = "oliver.king@dtc.ox.ac.uk"},
 ]
-license = {text = "Apache-2.0"}
+license = {text = "AGPL-3.0-only"}
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: Apache Software License",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
@@ -30,6 +30,7 @@ classifiers = [
 dynamic = ["version"]
 dependencies = [
     "ultralytics==8.3.78",
+    "lap>=0.5.12",
     "polars>=0.20.0",
     "click>=8.0.0",
     "opencv-python>=4.5.0",
