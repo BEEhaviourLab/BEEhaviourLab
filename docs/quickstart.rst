@@ -3,13 +3,8 @@ Quickstart Guide
 
 This guide shows the simplest end-to-end usage for available modules.
 
-Modules
--------
-
-Additional module quickstarts will be added here as they become available.
-
 Tracking
-~~~~~~~~
+--------
 
 Create local config files (optional but recommended if you want to tweak defaults):
 
@@ -37,7 +32,7 @@ Create local config files (optional but recommended if you want to tweak default
      --out /path/to/annotated.mp4
 
 Batch processing
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 Batch processing allows you to run the pipeline across all videos in a directory tree.
 

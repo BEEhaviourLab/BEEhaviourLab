@@ -3,7 +3,10 @@ Installation Guide
 
 BEEhaviourLab is distributed as a Python package.
 
-From PyPI:
+Using pip
+---------
+
+To install the latest stable release from PyPI:
 
 .. code-block:: bash
 
@@ -30,6 +33,9 @@ To install an editable package from source (recommended for development):
    git clone https://github.com/BEEhaviourLab/BEEhaviourLab.git
    cd BEEhaviourLab
    pip install -e .
+
+From source
+-----------
 
 Installation from source with packages for generating docs:
 
