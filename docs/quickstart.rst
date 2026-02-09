@@ -1,7 +1,15 @@
 Quickstart Guide
 ================
 
-This guide shows the simplest end-to-end usage of the Tracking pipeline.
+This guide shows the simplest end-to-end usage for available modules.
+
+Modules
+-------
+
+Additional module quickstarts will be added here as they become available.
+
+Tracking
+~~~~~~~~
 
 Create local config files (optional but recommended if you want to tweak defaults):
 
@@ -9,7 +17,7 @@ Create local config files (optional but recommended if you want to tweak default
 
    bee config init
 
-1) Run the tracking pipeline on a video:
+1) Run the Tracking pipeline on a video:
 
 .. code-block:: bash
 
@@ -36,5 +44,14 @@ Batch processing allows you to run the pipeline across all videos in a directory
 .. code-block:: bash
 
    bee track batch-process --input-dir /path/to/videos
+
+This will create a new directory called ``tracking_outputs`` in the current working directory, with subdirectories for each video containing the outputs.
+
+To specify a different output directory name:
+.. code-block:: bash
+
    bee track batch-process --input-dir /path/to/videos --output-dir-name tracking_outputs
+
+To filter videos by name (e.g. only process videos containing "hiveA" in the filename):
+.. code-block:: bash
    bee track batch-process --input-dir /path/to/videos --filter hiveA
