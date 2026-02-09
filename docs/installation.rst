@@ -9,15 +9,21 @@ From PyPI:
 
    pip install beehaviourlab
 
-From PyPI with extras:
+Alternatively, install with packages to generate docs or to run tests:
 
 .. code-block:: bash
 
    pip install "beehaviourlab[docs]"
    pip install "beehaviourlab[test]"
+
+To install with all extras (docs + tests):
+
+.. code-block:: bash
+
    pip install "beehaviourlab[dev]"
 
-From source (editable):
+
+To install an editable package from source (recommended for development):
 
 .. code-block:: bash
 
@@ -25,7 +31,7 @@ From source (editable):
    cd BEEhaviourLab
    pip install -e .
 
-Documentation dependencies:
+Installation from source with packages for generating docs:
 
 .. code-block:: bash
 
@@ -34,7 +40,7 @@ Documentation dependencies:
 This will install Sphinx and other dependencies required to build the
 documentation.
 
-Build the docs locally:
+To build the docs locally:
 
 .. code-block:: bash
 
@@ -42,8 +48,9 @@ Build the docs locally:
 
 The generated HTML can be found in ``docs/_build/html``.
 
-Test dependencies:
+To install with test dependencies, or both docs and test dependencies:
 
 .. code-block:: bash
 
    pip install -e ".[test]"
+   pip install -e ".[dev]"
