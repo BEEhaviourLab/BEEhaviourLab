@@ -48,10 +48,13 @@ Batch processing allows you to run the pipeline across all videos in a directory
 This will create a new directory called ``tracking_outputs`` in the current working directory, with subdirectories for each video containing the outputs.
 
 To specify a different output directory name:
+
 .. code-block:: bash
 
    bee track batch-process --input-dir /path/to/videos --output-dir-name tracking_outputs
 
 To filter videos by name (e.g. only process videos containing "hiveA" in the filename):
+
 .. code-block:: bash
+
    bee track batch-process --input-dir /path/to/videos --filter hiveA
