@@ -20,4 +20,3 @@ today and additional modules planned.
    :caption: Modules:
 
    tracking
-   future-modules
